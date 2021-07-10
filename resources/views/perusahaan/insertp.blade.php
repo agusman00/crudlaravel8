@@ -19,38 +19,24 @@
         <div class="col-8">
         <div class="card">
         <div class="card-body">
-        <form action="/insertpost" method="POST">
+        <form action="/perusahaan/insertppost" method="POST" enctype = "multipart/form-data" >
             @csrf
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nama Depan</label>
-                <input type="text" name="namadepan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                @error('namadepan')
-                  <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nama Belakang</label>
-                <input type="text" name="namabelakang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                @error('namabelakang')
-                  <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nama Perusahaan</label>
-                <input type="text" name="perusahaan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                @error('perusahaan')
+                <input type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                @error('nama')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nomor Telepon</label>
-                <input type="number" name="tlp" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                @error('tlp')
+                <label for="exampleInputEmail1" class="form-label">Logo</label>
+                <input type="file" name="foto" class="form-control">
+                @error('foto')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>

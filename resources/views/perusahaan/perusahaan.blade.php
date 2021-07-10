@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
+
 </head>
 
 <body id="page-top">
@@ -34,7 +35,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/perusahaan/perusahaan">
                 <div class="sidebar-brand-icon rotate-n-0">
                     <i class="fas fa-user-tie"></i>
                 </div>
@@ -42,7 +43,7 @@
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
@@ -60,8 +61,8 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/perusahaan/perusahaan">Perusahaan</a>
-                        <a class="collapse-item active" href="/karyawan">Karyawan</a>
+                        <a class="collapse-item active" href="/perusahaan/perusahaan">Perusahaan</a>
+                        <a class="collapse-item" href="/karyawan">Karyawan</a>
                     </div>
                 </div>
             </li>
@@ -75,7 +76,7 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/log/myaccountk">My profile</a>
+                        <a class="collapse-item" href="/log/myaccount">My profile</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="/404">Setting Akun</a>
@@ -316,7 +317,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard Perusahaan</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -327,45 +328,43 @@
                     <!-- Content table -->
                         <!--content-->
             <div class="">
-                <a href="/insert" class="btn btn-success" type="button">Tambah +</a>
+                <a href="/perusahaan/insertp" class="btn btn-success" type="button">Tambah +</a>
 
                 <div class="row g-3 align-items-center mt-2">
                 <div class="col-6">
-                    <form action="/karyawan" method="GET">
+                    <form action="/perusahaan/perusahaan" method="GET">
                     <input type="search" class="form-control" name="search" placeholder="Search" aria-label="Search">
                     </form>
                 </div>
                 </div>
 
                 <table class="table">
-                <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Depan</th>
-                    <th>Nama Belakang</th>
-                    <th>Perusahaan</th>
-                    <th>Email</th>
-                    <th>Nomor Telepon</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($data as $index => $row)
-                <tr>
-                    <th scope="row">{{$index + $data->firstitem()}}</th>
-                    <td>{{$row->namadepan}}</td>
-                    <td>{{$row->namabelakang}}</td>
-                    <td>{{$row->perusahaan}}</td>
-                    <td>{{$row->email}}</td>
-                    <td>+62 {{$row->tlp}}</td>
-                    <td>
-                    <a href="/show/{{$row->id}}" class="btn btn-info btn-sm" type="button"><i class="far fa-eye"></i></a>
-                    <a href="/changeupdate/{{$row->id}}" class="btn btn-warning btn-sm" type="button"><i class="far fa-edit"></i></a>
-                    <a href="#" class="btn btn-danger delete btn-sm" data-id="{{$row->id}}" data-name="{{$row->namadepan}}" type="button"><i class="far fa-trash-alt"></i></a>
-                    </td>
-                </tr>
-                @endforeach
-                </tbody>
+                    <thead>
+                        <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Perusahaan</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    @foreach($data as $index => $row)
+                    <tbody>
+                        <tr>
+                        <th scope="row">{{$index + $data->firstitem()}}</th>
+                        <td>{{$row->nama}}</td>
+                        <td>{{$row->email}}</td>
+                        <td>
+                            <img class="border border-3 border-secondary rounded" src="{{asset('logo/'.$row->foto)}}" alt="" style="width: 100px">
+                        </td>
+                        <td>
+                            <a class="btn btn-info" href="/perusahaan/showp/{{$row->id}}" role="button"><i class="far fa-eye"></i></a>
+                            <a class="btn btn-warning" href="/perusahaan/changeupdatep/{{$row->id}}" role="button"><i class="far fa-edit"></i></a>
+                            <a href="#" class="btn btn-danger deletes btn-sm" data-id="{{$row->id}}" data-names="{{$row->nama}}" type="button"><i class="far fa-trash-alt"></i></a>
+                        </td>
+                        </tr>
+                    </tbody>
+                    @endforeach
                 </table>
                 {{ $data->links() }}
 
@@ -451,21 +450,21 @@
 </body>
 <!--alert-->
 <script>
-    $('.delete').click( function()
+    $('.deletes').click( function()
     {
-      var karyawanname = $(this).attr('data-name');
+      var perusahaanname = $(this).attr('data-names');
       var id = $(this).attr('data-id');
         swal({
           title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this data "+karyawanname+" file!",
+          text: "Once deleted, you will not be able to recover this data "+perusahaanname+" file!",
           icon: "warning",
           buttons: true,
           dangerMode: true,
         })
         .then((willDelete) => {
           if (willDelete) {
-            window.location = "/delete/"+id+""
-            swal("It worked! File "+karyawanname+" has been deleted!", {
+            window.location = "/perusahaan/deletes/"+id+""
+            swal("It worked! File "+perusahaanname+" has been deleted!", {
               icon: "success",
             });
           } else {

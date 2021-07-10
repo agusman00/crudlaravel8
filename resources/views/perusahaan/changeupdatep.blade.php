@@ -8,10 +8,10 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Karyawan</title>
+    <title>Tambah Data Perusahaan</title>
   </head>
   <body>
-    <h1 class="text-center">Tambah Data</h1>
+    <h1 class="text-center">Tambah Data Perusahaan</h1>
 
     <!--content-->
     <div class="container">
@@ -19,42 +19,29 @@
         <div class="col-8">
         <div class="card">
         <div class="card-body">
-        <form action="/insertpost" method="POST">
+        <form action="/perusahaan/update/{{$data->id}}" method= "POST" enctype = "multipart/form-data" >
             @csrf
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nama Depan</label>
-                <input type="text" name="namadepan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                @error('namadepan')
-                  <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nama Belakang</label>
-                <input type="text" name="namabelakang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                @error('namabelakang')
-                  <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nama Perusahaan</label>
-                <input type="text" name="perusahaan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                @error('perusahaan')
+                <input type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                value="{{$data->nama}}">
+                @error('nama')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"value="{{$data->email}}">
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nomor Telepon</label>
-                <input type="number" name="tlp" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                @error('tlp')
+                <label for="exampleInputEmail1" class="form-label">Logo</label>
+                <input type="file" name="foto" class="form-control">
+                @error('foto')
                   <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <img class="border border-3 border-secondary rounded" src="{{asset('logo/'.$data->foto)}}" alt="" style="width: 100px">
+            <br><button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
         </div>
         </div>
